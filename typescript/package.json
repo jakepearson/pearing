@@ -1,0 +1,12 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "run2": "tsc && node dist/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^2.4.2"
+  }
+}
