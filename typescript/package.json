@@ -4,9 +4,18 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "run2": "tsc && node dist/index.js"
+    "palindromes": "tsc && node dist/index.js",
+    "codefights": "tsc && node dist/codeFights.js",
+    "wordNumber": "tsc && node dist/wordNumber.js",
+    "test": "tsc && mocha"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.3",
+    "@types/mocha": "^2.2.41",
     "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
   }
 }
