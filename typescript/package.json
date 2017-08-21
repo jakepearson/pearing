@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "palindromes": "tsc && node dist/index.js",
-    "codefights": "tsc && node dist/codeFights.js",
+    "codeFights": "tsc && node dist/codeFights.js",
     "wordNumber": "tsc && node dist/wordNumber.js",
     "test": "tsc && mocha"
   },
