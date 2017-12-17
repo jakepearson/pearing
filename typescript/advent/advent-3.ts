@@ -25,15 +25,11 @@ function getMiddles(radius: number): number[] {
 function distance(input: number): number {
   const distanceToRing = Math.floor(Math.ceil(Math.sqrt(input)) / 2);
   const middles = getMiddles(distanceToRing);
-  console.log("Distance for: " + input)
-  console.log("  to middle: " + distanceToRing)
-  console.log("  " + middles);
   var distanceToMiddle = Number.MAX_SAFE_INTEGER;
   middles.forEach(middle => {
     const difference = Math.abs(middle - input);
     if(difference < distanceToMiddle) {
       distanceToMiddle = difference;
-      //console.log("  " + middle + "," + distanceToMiddle)
     }
   })
   return distanceToRing + distanceToMiddle;
