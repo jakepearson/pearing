@@ -10,7 +10,6 @@ const cases: Case[] = [
   { input: "aa bb cc dd aa", expected: false },
 ]
 
-console.log(process.cwd())
 const bigInput = fs.readFileSync('advent/advent-4.txt', 'utf8')
 
 function valid(input: string): boolean {
