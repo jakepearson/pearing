@@ -1,29 +1,14 @@
-function toLetters(input: string) {
-  let letterMap: { [id: string]: number } = {};
-  for (let i = 0; i < input.length; i++) {
-    const letter = input[i];
-    if (!letterMap[letter]) {
-      letterMap[letter] = 0;
-    }
-    letterMap[letter]++;
-  }
-  return letterMap;
-}
-
-function commonCharacterCount(s1: string, s2: string): number {
-  let letters = toLetters(s1);
+function total(input: string): number {
   let result = 0;
-  for(let i=0; i<s2.length; i++) {
-    let letter = s2[i];
-    if(letters[letter]) {
-      letters[letter]--;
-      result++;
-      if(letters[letter] === 0) {
-        delete letters[letter];
-      }
-    }
+  for(let i=0; i<input.length; i++) {
+    result += parseInt(input[i]);
   }
   return result;
 }
 
-console.log(commonCharacterCount("zzz", "zzzzz"));
+function isLucky(n: number): boolean {
+  const nString = n.toString();
+  return total(nString.substr(0, nString.length/2)) === total(nString.substr(nString.length/2));
+}
+
+console.log(isLucky(1230));
