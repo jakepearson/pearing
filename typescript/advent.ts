@@ -5,6 +5,7 @@ import * as advent4 from './advent/advent-4';
 import * as advent5 from './advent/advent-5';
 import * as advent8 from './advent/advent-8';
 import * as advent16 from './advent/advent-16';
+import * as advent17 from './advent/advent-17';
 
 function main() {
   switch (process.argv[2]) {
@@ -15,6 +16,7 @@ function main() {
     case "5": return advent5.main();
     case "8": return advent8.main();
     case "16": return advent16.main();
+    case "17": return advent17.main();
     default: throw new Error("You're not on the list")
   }
 }

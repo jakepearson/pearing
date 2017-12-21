@@ -32,11 +32,10 @@ function execute(state: string, instructions: string): string {
   return programs.join('')
 }
 
-type Test {
+type Test = {
   input: string;
   defaultState: string;
 }
-
 
 const littleInput: Test = {
   input: "s1,x3/4,pe/b",
