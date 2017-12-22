@@ -16,32 +16,41 @@ function getChildrenIds(input: string): string[] {
   return []
 }
 
-export function main() {
-  const input = util.read('advent-7-big.txt').split(util.delimiter)
-  const map = new Map<string, Node>()
+function parse(): Map<string, Node> {
+  const input = util.read('advent-7-big.txt').split(util.delimiter);
+  const map = new Map<string, Node>();
   input.forEach(line => {
-    const parts = line.split(/\(|\)/)
+    const parts = line.split(/\(|\)/);
     const node: Node = {
       id: parts[0].trim(),
       weight: parseInt(parts[1].trim()),
       childrenIds: getChildrenIds(parts[2]),
       children: [],
       parent: null
-    }
-    map.set(node.id, node)
-  })
+    };
+    map.set(node.id, node);
+  });
   map.forEach(node => {
     node.childrenIds.forEach(childId => {
-      const child = map.get(childId)
-      child.parent = node
-      node.children.push(child)
-    })
-  })
-  //find root
+      const child = map.get(childId);
+      child.parent = node;
+      node.children.push(child);
+    });
+  });
+  return map;
+}
 
+function findRoot(map: Map<string, Node>) {
   map.forEach(node => {
     if(node.parent === null && node.children.length > 0) {
       console.log(node.id)      
     }
   })
+}
+
+export function main() {
+  const map = parse();
+  findRoot(map)
+
+  
 }
