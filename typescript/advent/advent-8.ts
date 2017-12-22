@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import * as util from './util'
 
 const HIGHEST = "HIGHEST_EVER"
 
@@ -57,10 +57,10 @@ a inc 1 if b < 5\n\
 c dec -10 if a >= 1\n\
 c inc -20 if c == 10"
 
-const bigInput = fs.readFileSync('advent/advent-8.txt', 'utf8')
+const bigInput = util.read('advent/advent-8.txt')
 
 export function main() {
-  const input = bigInput.split('\n');
+  const input = bigInput.split(util.delimiter);
   const memory: { [key: string]: number } = {}
   memory[HIGHEST] = Number.MIN_SAFE_INTEGER
   input.forEach(instruction => processInstruction(instruction, memory))

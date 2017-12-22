@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as util from './util'
 
 type Case = {
   input: string;
@@ -10,7 +10,7 @@ const cases: Case[] = [
   { input: "aa bb cc dd aa", expected: false },
 ]
 
-const bigInput = fs.readFileSync('advent/advent-4.txt', 'utf8')
+const bigInput = util.read('advent/advent-4.txt')
 
 function valid(input: string): boolean {
   const words = input.split(' ');
@@ -34,6 +34,6 @@ export function main() {
   //   const success = result === c.expected ? "Good" : "Bad ";
   //   console.log(success + ": " + c.input + ", wanted: " + c.expected + " but was: " + result)
   // })
-  const result = bigInput.split('\n').filter(line => valid(line)).length
+  const result = bigInput.split(util.delimiter).filter(line => valid(line)).length
   console.log("Length: " + result)
 }

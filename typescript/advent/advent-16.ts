@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import * as util from './util'
 
 function spin(programs: string[], distance: number) {
   for (var i = 0; i < distance; i++) {
@@ -42,7 +42,7 @@ const littleInput: Test = {
   defaultState: "abdce"
 }
 const bigInput: Test = {
-  input: fs.readFileSync('advent/advent-16.txt', 'utf8'),
+  input: util.read('advent/advent-16.txt'),
   defaultState: "abcdefghijklmnop"
 }
 

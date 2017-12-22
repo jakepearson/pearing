@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as util from './util'
 
 function jumper(input: number[]): number {
   var index = 0
@@ -17,7 +17,7 @@ function jumper(input: number[]): number {
   return jumps
 }
 
-const bigInput = fs.readFileSync('advent/advent-5.txt', 'utf8').split('\n').map(line => parseInt(line))
+const bigInput = util.read('advent/advent-5.txt').split(util.delimiter).map(line => parseInt(line))
 
 export function main() {
   const input = [0, 3, 0, 1, -3]
