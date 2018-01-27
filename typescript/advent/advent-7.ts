@@ -40,17 +40,37 @@ function parse(): Map<string, Node> {
   return map;
 }
 
-function findRoot(map: Map<string, Node>) {
+function findRoot(map: Map<string, Node>): string {
+  var result: string
   map.forEach(node => {
     if(node.parent === null && node.children.length > 0) {
-      console.log(node.id)      
+      result = node.id
     }
   })
+  return result
+}
+
+function weightHunter(map: Map<string, Node>, id: string, depth: number): number {
+  const node = map.get(id)
+  const weights = new Map<number, number>()
+  var total = node.weight
+  for(var child of node.children) {
+    const branchWeight = weightHunter(map, child.id, depth + 1) 
+    weights.set(branchWeight, 1 + (weights.get(branchWeight) || 0))
+    total += branchWeight
+  }
+  if(weights.size > 1) {
+    console.log(`${" ".repeat(depth)}${id}: ${total}`)
+    //    console.log(weights.size)
+    weights.forEach((c, w) => {
+//      console.log(`${" ".repeat(depth)}${w}: ${c}`)
+    })
+  }
+  return total
 }
 
 export function main() {
   const map = parse();
-  findRoot(map)
-
-  
+  const root = findRoot(map)
+  weightHunter(map, root, 0)
 }
