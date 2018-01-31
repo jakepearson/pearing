@@ -8,6 +8,7 @@
     "codeFights": "tsc && node dist/codeFights.js",
     "wordNumber": "tsc && node dist/wordNumber.js",
     "advent": "tsc && node dist/advent.js",
+    "runner": "tsc && node dist/runner.js",
     "test": "tsc && mocha"
   },
   "devDependencies": {
