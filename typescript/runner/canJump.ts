@@ -1,24 +1,26 @@
-function canJump(input: number[], index: number = 0, cache: Map<number, boolean> = new Map<number, boolean>()): boolean {
+function jump(input: number[], index: number = 0, cache: Map<number, number> = new Map<number, number>()): number {
   if (cache.has(index)) {
     return cache.get(index)
   }
   if (index === input.length - 1) {
-    cache.set(index, true)
-    return true
+    cache.set(index, 0)
+    return 0
   }
-  let result = false
+  let result = Number.MAX_SAFE_INTEGER
 
   for (let i = 1; i <= input[index]; i++) {
-    if (canJump(input, index + i, cache)) {
-      result = true
-      break
+    const jumpDistance = jump(input, index + i, cache)
+    if (jumpDistance < result) {
+      result = jumpDistance
     }
   }
+  result++
   cache.set(index, result)
   return result
 }
 
 export function main() {
-  console.log(canJump([2, 3, 1, 1, 4]))
-  console.log(canJump([3, 2, 1, 0, 4]))
+  console.log(jump([1, 1, 1, 1, 1]))
+  console.log(jump([2, 3, 1, 1, 4]))
+  console.log(jump([3, 2, 1, 0, 4]))
 }
