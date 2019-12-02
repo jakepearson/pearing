@@ -4,18 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "palindromes": "tsc && node dist/index.js",
-    "codeFights": "tsc && node dist/codeFights.js",
-    "wordNumber": "tsc && node dist/wordNumber.js",
-    "advent": "tsc && node dist/advent.js",
-    "runner": "tsc && node dist/runner.js",
+    "palindromes": "ts-node index.ts",
+    "codeFights": "ts-node codeFights.ts",
+    "wordNumber": "ts-node wordNumber.ts",
+    "advent": "ts-node advent.ts",
+    "runner": "ts-node runner.ts",
+    "advent-2019": "ts-node advent-2019.ts",
     "test": "tsc && mocha"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/chai": "^4.0.3",
-    "@types/mocha": "^2.2.41",
     "@types/node": "^8.5.1",
+    "ts-node": "^8.5.4",
     "typescript": "^2.4.2"
   },
   "dependencies": {
