@@ -1,4 +1,4 @@
-import * as util from './util'
+import * as util from '../util'
 
 function spin(programs: string[], distance: number) {
   for (var i = 0; i < distance; i++) {

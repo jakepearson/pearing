@@ -1,4 +1,4 @@
-import * as util from './util'
+import * as util from '../util'
 
 const HIGHEST = "HIGHEST_EVER"
 
@@ -35,7 +35,7 @@ function processInstruction(instruction: string, memory: { [key: string]: number
     setupRegister(registerToChange, memory)
     memory[registerToChange] += value
     const newValue = memory[registerToChange]
-    if(newValue > memory[HIGHEST]) {
+    if (newValue > memory[HIGHEST]) {
       memory[HIGHEST] = newValue
     }
   }

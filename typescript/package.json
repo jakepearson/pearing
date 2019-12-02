@@ -9,7 +9,6 @@
     "wordNumber": "ts-node wordNumber.ts",
     "advent": "ts-node advent.ts",
     "runner": "ts-node runner.ts",
-    "advent-2019": "ts-node advent-2019.ts",
     "test": "tsc && mocha"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-import * as util from './util'
+import * as util from '../util'
 
 type Case = {
   input: string;
@@ -16,9 +16,9 @@ function valid(input: string): boolean {
   const words = input.split(' ');
   const holder = new Set<string>();
 
-  for(var word of words) {
+  for (var word of words) {
     word = word.split('').sort().join('')
-    if(holder.has(word)) {
+    if (holder.has(word)) {
       return false;
     }
     holder.add(word);

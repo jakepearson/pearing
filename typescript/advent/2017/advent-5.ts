@@ -1,4 +1,4 @@
-import * as util from './util'
+import * as util from '../util'
 
 function jumper(input: number[]): number {
   var index = 0
