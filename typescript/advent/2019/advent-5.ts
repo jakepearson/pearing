@@ -1,4 +1,5 @@
 import * as util from '../util'
+import * as readline from 'readline-sync'
 
 const smallInput = "1,1,1,4,99,5,6,0,99"
 const reallySmall = "1,0,0,0,99"
@@ -21,6 +22,7 @@ function math(operation: string, offset: number, data: number[], f: (x: number, 
 
   let output = f(operand1, operand2)
   let outputIndex = data[offset + 3]
+
   data[outputIndex] = output
 }
 
@@ -33,8 +35,9 @@ function multiply(operation: string, offset: number, data: number[]) {
 }
 
 function input(operation: string, offset: number, data: number[]) {
-  const operand1 = get(offset + 1, operation[2], data)
-  data[operand1] = operand1
+  const operand1 = data[offset + 1]//get(offset + 1, operation[2], data)
+  const input = "1"
+  data[operand1] = Number.parseInt(input)
 }
 
 function output(operation: string, offset: number, data: number[]) {
@@ -44,27 +47,23 @@ function output(operation: string, offset: number, data: number[]) {
 
 function processOperation(offset: number, data: number[]): number {
   const operation = data[offset].toString().padStart(5, "0")
-  const code = operation[4]
+  const code = operation[3] + operation[4]
   switch (code) {
-    case "1":
-      console.log(`add: ${operation}`)
+    case "01":
       add(operation, offset, data)
       return 4
-    case "2":
-      console.log(`multiply: ${operation}`)
+    case "02":
       multiply(operation, offset, data)
       return 4
-    case "3":
-      console.log(`input: ${operation}`)
+    case "03":
       input(operation, offset, data)
-      return 3
-    case "4":
-      console.log(`output: ${operation}`)
+      return 2
+    case "04":
       output(operation, offset, data)
       return 2
-    case "9":
-      console.log(`exit: ${operation}`)
+    case "99":
       return -1
+    default: throw `Unknown opcode: ${operation}`
   }
 }
 
@@ -87,8 +86,5 @@ function parse(input: string): number[] {
 
 export function main() {
   const data = parse(bigInput)
-  //const data = parse("1002,4,3,4,33")
-  //console.log(data)
-  //console.log(run(data))
   run(data)
 }
