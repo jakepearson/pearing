@@ -9,15 +9,18 @@
     "wordNumber": "ts-node wordNumber.ts",
     "advent": "ts-node advent.ts",
     "runner": "ts-node runner.ts",
-    "test": "tsc && mocha"
+    "test": "jest"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/chai": "^4.0.3",
+    "@types/jest": "^24.0.24",
     "@types/node": "^8.5.1",
     "@types/readline-sync": "^1.4.3",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
     "ts-node": "^8.5.4",
-    "typescript": "^2.4.2"
+    "typescript": "^3.7.4"
   },
   "dependencies": {
     "axios": "^0.18.0",
