@@ -1,3 +1,8 @@
+interface IInputOutput {
+  input(): number
+  output(value: number): void
+}
+
 function get(operationPointer: number, parameterOffset: number, mode: string, data: number[]): number {
   switch (mode) {
     case "0":
@@ -35,15 +40,15 @@ function multiply(operation: string, offset: number, data: number[]) {
   return math(operation, offset, data, (x, y) => x * y)
 }
 
-function input(operation: string, offset: number, data: number[], inputData: number[]) {
+function input(operation: string, offset: number, data: number[], io: IInputOutput) {
   const operand1 = get(offset, 1, "1", data)
-  const input = inputData.shift().toString()
-  set(Number.parseInt(input), operand1, data)
+  const input = io.input()//inputData.shift().toString()
+  set(input, operand1, data)
 }
 
-function output(operation: string, offset: number, data: number[], outputData: number[]) {
+function output(operation: string, offset: number, data: number[], io: IInputOutput) {
   const operand1 = get(offset, 1, operation[2], data)
-  outputData.push(operand1)
+  io.output(operand1)
 }
 
 function setOffset(operation: string, offset: number, data: number[]): number {
@@ -74,7 +79,7 @@ function equal(operation: string, offset: number, data: number[]) {
   math(operation, offset, data, (x, y) => x === y ? 1 : 0)
 }
 
-function processOperation(offset: number, data: number[], inputData: number[], outputData: number[]): (number | null) {
+function processOperation(offset: number, data: number[], io: IInputOutput): (number | null) {
   const operation = get(offset, 0, "1", data).toString().padStart(5, "0")
   const code = operation[3] + operation[4]
   switch (code) {
@@ -85,10 +90,10 @@ function processOperation(offset: number, data: number[], inputData: number[], o
       multiply(operation, offset, data)
       return offset + 4
     case "03":
-      input(operation, offset, data, inputData)
+      input(operation, offset, data, io)
       return offset + 2
     case "04":
-      output(operation, offset, data, outputData)
+      output(operation, offset, data, io)
       return offset + 2
     case "05":
       const trueOffset = jumpIfTrue(operation, offset, data)
@@ -117,11 +122,10 @@ function processOperation(offset: number, data: number[], inputData: number[], o
   }
 }
 
-export function run(data: number[], input: number[]): number[] {
+export function run(data: number[], io: IInputOutput) {
   let offset = 0
-  let output: number[] = []
   do {
-    const newOffset = processOperation(offset, data, input, output)
+    const newOffset = processOperation(offset, data, io)
     if (newOffset == null) {
       break;
     }
@@ -135,4 +139,17 @@ export function run(data: number[], input: number[]): number[] {
 
 export function parse(input: string): number[] {
   return input.split(',').map(s => Number.parseInt(s))
+}
+
+export class SimpleInputOutput implements IInputOutput {
+  inputData: number[] = []
+  outputData: number[] = []
+
+  input(): number {
+    return this.inputData.shift()
+  }
+
+  output(value: number) {
+    this.outputData.push(value)
+  }
 }

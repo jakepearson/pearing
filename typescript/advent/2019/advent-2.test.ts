@@ -1,9 +1,14 @@
 import * as intcode from './intcode'
 
+
+
 function validate(program: string, input: number[], expectedOutput: number[]): number[] {
+  const io = new intcode.SimpleInputOutput()
+  io.inputData = input
+
   const data = intcode.parse(program)
-  const output = intcode.run(data, input)
-  expect(output).toStrictEqual(expectedOutput)
+  const output = intcode.run(data, io)
+  expect(io.outputData).toStrictEqual(expectedOutput)
   return data
 }
 
