@@ -1,6 +1,5 @@
 (ns advent.day-3
-  (:require [advent.util :as util]
-            [clojure.string :as string]))
+  (:require   [clojure.string :as string]))
 
 (defn parse [line]
   (let [parts (-> line

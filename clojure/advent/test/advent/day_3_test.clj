@@ -14,4 +14,4 @@
   (is (= 4 (day-3/overlaps "#1 @ 1,3: 4x4\n#2 @ 3,1: 4x4\n#3 @ 5,5: 2x2"))))
 
 (deftest overlaps-large
-  (is (= 0 (-> "day-3.txt" util/read-txt day-3/overlaps))))
+  (is (= 97218 (-> "day-3.txt" util/read-txt day-3/overlaps))))
