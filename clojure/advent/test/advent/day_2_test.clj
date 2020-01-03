@@ -1,4 +1,4 @@
-(ns advent.day-1-test
+(ns advent.day-2-test
   (:require [clojure.test :refer [deftest is]]
             [advent.util :as util]
             [advent.day-2 :as day-2]))
@@ -17,4 +17,4 @@
   (is (= 12 (day-2/checksum "bababc abbcde abcccd aabcdd abcdee ababab"))))
 
 (deftest solution
-  (is (= 12 (day-2/checksum (util/read-txt "day-2.txt")))))
+  (is (= 5456 (day-2/checksum (util/read-txt "day-2.txt")))))
