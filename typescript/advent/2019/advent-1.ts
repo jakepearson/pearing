@@ -1,34 +1,33 @@
-import * as util from '../util'
+import * as util from '../util';
 
-const bigInput = util.read(`${__dirname}/advent-1.txt`)
+const bigInput = util.read(`${__dirname}/advent-1.txt`);
 
 function calculateFuelRequirements(mass: number): number {
-  return Math.floor(mass / 3) - 2
+  return Math.floor(mass / 3) - 2;
 }
 
 function calculateFuelRequirementsFancy(mass: number): number {
-  let total = 0
-  let next = calculateFuelRequirements(mass)
+  let total = 0;
+  let next = calculateFuelRequirements(mass);
   while (next > 0) {
-    total += next
-    next = calculateFuelRequirements(next)
+    total += next;
+    next = calculateFuelRequirements(next);
   }
-  return total
+  return total;
 }
 
 export function main() {
-  let total = 0
-  bigInput.split(util.delimiter).forEach(l => {
-    let mass = Number.parseInt(l)
-    total += calculateFuelRequirements(mass)
-  })
-  console.log(total)
+  let total = 0;
+  bigInput.split(util.delimiter).forEach((l) => {
+    const mass = Number.parseInt(l, 10);
+    total += calculateFuelRequirements(mass);
+  });
+  console.log(total);
 
-  total = 0
-  bigInput.split(util.delimiter).forEach(l => {
-    let mass = Number.parseInt(l)
-    total += calculateFuelRequirementsFancy(mass)
-  })
-  console.log(total)
-
+  total = 0;
+  bigInput.split(util.delimiter).forEach((l) => {
+    const mass = Number.parseInt(l, 10);
+    total += calculateFuelRequirementsFancy(mass);
+  });
+  console.log(total);
 }
