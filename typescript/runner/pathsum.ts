@@ -6,27 +6,27 @@ interface TreeNode {
 
 function hasPathSum(node: TreeNode, goal: number, parentTotal: number = 0): boolean {
   if (!node) {
-    return false
+    return false;
   }
-  const total = parentTotal + node.val
+  const total = parentTotal + node.val;
   if (!node.left && !node.right) {
-    return total === goal
+    return total === goal;
   }
 
   if (hasPathSum(node.left, goal, total)) {
-    return true
+    return true;
   }
   if (hasPathSum(node.right, goal, total)) {
-    return true
+    return true;
   }
-  return false
+  return false;
 }
 
 function maxPathSum(node: TreeNode): number {
   if (!node) {
-    return 0
+    return 0;
   }
-  return node.val + Math.max(maxPathSum(node.left), maxPathSum(node.right))
+  return node.val + Math.max(maxPathSum(node.left), maxPathSum(node.right));
 }
 
 export function main() {
@@ -37,14 +37,14 @@ export function main() {
       left: {
         val: 11,
         left: {
-          val: 7
+          val: 7,
         },
         right: {
-          val: 2
-        }
-      }
-    }
-  }
+          val: 2,
+        },
+      },
+    },
+  };
 
-  console.log(maxPathSum(input))
+  console.log(maxPathSum(input));
 }

@@ -1,35 +1,35 @@
-//import * as Collections from 'typescript-collections';
+// import * as Collections from 'typescript-collections';
 
 function maxProfit(maxTrades: number, quotes: number[]): number {
-  const trades: number[] = []
+  const trades: number[] = [];
 
-  let maxProfit = 0
-  let peakIndex = 0
-  let valleyIndex = 0
+  let maxProfitLocal = 0;
+  let peakIndex = 0;
+  let valleyIndex = 0;
   for (let i = 0; i < quotes.length; i++) {
     while (i < quotes.length - 1 && quotes[i + 1] < quotes[i]) {
-      i++
+      i++;
     }
-    valleyIndex = i
-    peakIndex = i
+    valleyIndex = i;
+    peakIndex = i;
 
     while (i < quotes.length - 1 && quotes[i + 1] > quotes[i]) {
-      i++
+      i++;
     }
-    peakIndex = i
-    const profit = quotes[peakIndex] - quotes[valleyIndex]
-    trades.push(profit)
-    peakIndex = i
-    valleyIndex = i
+    peakIndex = i;
+    const profit = quotes[peakIndex] - quotes[valleyIndex];
+    trades.push(profit);
+    peakIndex = i;
+    valleyIndex = i;
   }
-  trades.sort((t1, t2) => t2 - t1)
+  trades.sort((t1, t2) => t2 - t1);
   for (let i = 0; i < 2; i++) {
-    maxProfit += trades[i]
+    maxProfitLocal += trades[i];
   }
-  return maxProfit
+  return maxProfitLocal;
 }
 
 export function main() {
-  const input = [5, 2, 3, 4, 2, 5, 1, 5]
-  console.log(maxProfit(2, input))
+  const input = [5, 2, 3, 4, 2, 5, 1, 5];
+  console.log(maxProfit(2, input));
 }

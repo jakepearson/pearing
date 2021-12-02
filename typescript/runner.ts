@@ -1,2 +1,3 @@
-const runnerId = process.argv[2]
-eval(`const runner = require("./runner/${runnerId}");runner.main()`)
+const runnerId = process.argv[2];
+// eslint-disable-next-line no-eval
+eval(`const runner = require("./runner/${runnerId}");runner.main()`);

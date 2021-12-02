@@ -1,4 +1,5 @@
-const year = process.argv[2]
-const adventId = process.argv[3]
+const year = process.argv[2];
+const adventId = process.argv[3];
 
-eval(`const advent = require("./advent/${year}/advent-${adventId}");advent.main()`)
+// eslint-disable-next-line no-eval
+eval(`const advent = require("./advent/${year}/advent-${adventId}");advent.main()`);

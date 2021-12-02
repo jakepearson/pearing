@@ -4,9 +4,9 @@ const sample = '1721\n979\n366\n299\n675\n1456';
 const real = util.read(`${__dirname}/advent-1.txt`);
 
 function find(numbers: number[]): number {
-  for (let i = 0; i < numbers.length; i += 1) {
-    for (let j = i; j < numbers.length; j += 1) {
-      for (let k = j; k < numbers.length; k += 1) {
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i; j < numbers.length; j++) {
+      for (let k = j; k < numbers.length; k++) {
         if (numbers[i] + numbers[j] + numbers[k] === 2020) {
           return numbers[i] * numbers[j] * numbers[k];
         }

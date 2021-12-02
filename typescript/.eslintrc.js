@@ -20,5 +20,10 @@ module.exports = {
     'no-unused-vars': 'off',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
+    'no-plusplus': 'off',
+    'no-multi-str': 'off',
+    'no-restricted-syntax': 'off',
+    'no-undef': 'off',
+    'max-len': 'off',
   },
 };

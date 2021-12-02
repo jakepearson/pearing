@@ -1,4 +1,3 @@
-import { match } from 'assert';
 import * as util from '../util';
 
 const sample = '1-3 a: abcde\n1-3 b: cdefg\n2-9 c: ccccccccc';
