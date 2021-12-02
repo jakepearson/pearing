@@ -1,7 +1,8 @@
+/* eslint-disable linebreak-style */
 function total(input: string): number {
   let result = 0;
   for (let i = 0; i < input.length; i++) {
-    result += parseInt(input[i]);
+    result += parseInt(input[i], 10);
   }
   return result;
 }
