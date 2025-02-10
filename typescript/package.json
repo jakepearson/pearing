@@ -4,11 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "palindromes": "ts-node index.ts",
-    "codeFights": "ts-node codeFights.ts",
-    "wordNumber": "ts-node wordNumber.ts",
-    "advent": "ts-node advent.ts",
-    "runner": "ts-node runner.ts",
+    "palindromes": "bun index.ts",
+    "codeFights": "bun codeFights.ts",
+    "wordNumber": "bun wordNumber.ts",
+    "advent": "bun advent.ts",
+    "runner": "bun runner.ts",
     "test": "jest",
     "build": "tsc"
   },
